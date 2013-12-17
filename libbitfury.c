@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
-**/
+ **/
 
 #include "config.h"
 
@@ -84,25 +84,25 @@ char outbuf[16];
 
 /* Test vectors to calculate (using address-translated loads) */
 unsigned atrvec[] = {
-0xb0e72d8e, 0x1dc5b862, 0xe9e7c4a6, 0x3050f1f5, 0x8a1a6b7e, 0x7ec384e8, 0x42c1c3fc, 0x8ed158a1, /* MIDSTATE */
-0,0,0,0,0,0,0,0,
-0x8a0bb7b7, 0x33af304f, 0x0b290c1a, 0xf0c4e61f, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
+	0xb0e72d8e, 0x1dc5b862, 0xe9e7c4a6, 0x3050f1f5, 0x8a1a6b7e, 0x7ec384e8, 0x42c1c3fc, 0x8ed158a1, /* MIDSTATE */
+	0,0,0,0,0,0,0,0,
+	0x8a0bb7b7, 0x33af304f, 0x0b290c1a, 0xf0c4e61f, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
 
-0x9c4dfdc0, 0xf055c9e1, 0xe60f079d, 0xeeada6da, 0xd459883d, 0xd8049a9d, 0xd49f9a96, 0x15972fed, /* MIDSTATE */
-0,0,0,0,0,0,0,0,
-0x048b2528, 0x7acb2d4f, 0x0b290c1a, 0xbe00084a, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
+	0x9c4dfdc0, 0xf055c9e1, 0xe60f079d, 0xeeada6da, 0xd459883d, 0xd8049a9d, 0xd49f9a96, 0x15972fed, /* MIDSTATE */
+	0,0,0,0,0,0,0,0,
+	0x048b2528, 0x7acb2d4f, 0x0b290c1a, 0xbe00084a, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
 
-0x0317b3ea, 0x1d227d06, 0x3cca281e, 0xa6d0b9da, 0x1a359fe2, 0xa7287e27, 0x8b79c296, 0xc4d88274, /* MIDSTATE */
-0,0,0,0,0,0,0,0,
-0x328bcd4f, 0x75462d4f, 0x0b290c1a, 0x002c6dbc, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
+	0x0317b3ea, 0x1d227d06, 0x3cca281e, 0xa6d0b9da, 0x1a359fe2, 0xa7287e27, 0x8b79c296, 0xc4d88274, /* MIDSTATE */
+	0,0,0,0,0,0,0,0,
+	0x328bcd4f, 0x75462d4f, 0x0b290c1a, 0x002c6dbc, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
 
-0xac4e38b6, 0xba0e3b3b, 0x649ad6f8, 0xf72e4c02, 0x93be06fb, 0x366d1126, 0xf4aae554, 0x4ff19c5b, /* MIDSTATE */
-0,0,0,0,0,0,0,0,
-0x72698140, 0x3bd62b4f, 0x3fd40c1a, 0x801e43e9, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
+	0xac4e38b6, 0xba0e3b3b, 0x649ad6f8, 0xf72e4c02, 0x93be06fb, 0x366d1126, 0xf4aae554, 0x4ff19c5b, /* MIDSTATE */
+	0,0,0,0,0,0,0,0,
+	0x72698140, 0x3bd62b4f, 0x3fd40c1a, 0x801e43e9, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
 
-0x9dbf91c9, 0x12e5066c, 0xf4184b87, 0x8060bc4d, 0x18f9c115, 0xf589d551, 0x0f7f18ae, 0x885aca59, /* MIDSTATE */
-0,0,0,0,0,0,0,0,
-0x6f3806c3, 0x41f82a4f, 0x3fd40c1a, 0x00334b39, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
+	0x9dbf91c9, 0x12e5066c, 0xf4184b87, 0x8060bc4d, 0x18f9c115, 0xf589d551, 0x0f7f18ae, 0x885aca59, /* MIDSTATE */
+	0,0,0,0,0,0,0,0,
+	0x6f3806c3, 0x41f82a4f, 0x3fd40c1a, 0x00334b39, /* WDATA: hashMerleRoot[7], nTime, nBits, nNonce */
 
 };
 
@@ -116,14 +116,14 @@ unsigned atrvec[] = {
 
 /* SHA256 CONSTANTS */
 static const unsigned SHA_K[64] = {
-        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
-        0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
-        0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
-        0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
-        0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
-        0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
-        0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
-        0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+	0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+	0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+	0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+	0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+	0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+	0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+	0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+	0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
 
 void t_print(struct timespec d_time) {
@@ -133,15 +133,15 @@ void t_print(struct timespec d_time) {
 
 
 struct  timespec t_add(struct  timespec  time1, struct  timespec  time2) {
-    struct  timespec  result ;
+	struct  timespec  result ;
 
-    result.tv_sec = time1.tv_sec + time2.tv_sec ;
-    result.tv_nsec = time1.tv_nsec + time2.tv_nsec ;
-    if (result.tv_nsec >= 1000000000L) {
-        result.tv_sec++ ;  result.tv_nsec = result.tv_nsec - 1000000000L ;
-    }
+	result.tv_sec = time1.tv_sec + time2.tv_sec ;
+	result.tv_nsec = time1.tv_nsec + time2.tv_nsec ;
+	if (result.tv_nsec >= 1000000000L) {
+		result.tv_sec++ ;  result.tv_nsec = result.tv_nsec - 1000000000L ;
+	}
 
-    return (result) ;
+	return (result) ;
 }
 
 
@@ -176,6 +176,7 @@ void ms3_compute(unsigned *p)
 
 	p[15] = a; p[14] = b; p[13] = c; p[12] = d; p[11] = e; p[10] = f; p[9] = g; p[8] = h;
 }
+
 
 int select_slot(int slot)
 {
@@ -234,7 +235,7 @@ void set_freq(int bits) {
 	uint64_t freq;
 	unsigned char *osc6;
 	int i;
-
+//    applog(LOG_WARNING, "Frequency set to %i", bits);
 	osc6 = (unsigned char *)&freq;
 	freq = (1ULL << bits) - 1ULL;
 
@@ -323,7 +324,7 @@ int detect_chip(int chip_n) {
 	spi_clear_buf();
 	spi_emit_break(); /* First we want to break chain! Otherwise we'll get all of traffic bounced to output */
 	spi_emit_fasync(chip_n);
-	set_freq(52);  //54 - 3F, 53 - 1F
+	set_freq(53);  //54 - 3F, 53 - 1F
 	send_conf();
 	send_init();
 	spi_txrx(spi_gettxbuf(), spi_getrxbuf(), spi_getbufsz());
@@ -388,11 +389,11 @@ int libbitfury_detectChips(struct bitfury_device *devices) {
 	else if (opt_bitfury_board_type == BITFURY_BOARD_TYPE_MBOARDV1) {
 		applog(LOG_WARNING, "MBoard V1 not implemented");
 
-		//slot_on[0] = 1;
+		slot_on[0] = 1;
 	}
 	else if (opt_bitfury_board_type == BITFURY_BOARD_TYPE_MBOARDV2) {
 		spi_init();
-		for (i=0; i < 4;i++)
+		for (i=0; i < MAX_SLOTS;i++)
 		{
 			select_slot(i);
 			spi_reset(1234); //what is this 1234?
@@ -406,14 +407,19 @@ int libbitfury_detectChips(struct bitfury_device *devices) {
 			int chip_detected;
 			select_slot(i);
 			do {
-				chip_detected = detect_chip(chip_n);
-				if (chip_detected) {
-					applog(LOG_WARNING, "BITFURY slot: %d, chip #%d detected", i, n);
-					devices[n].slot = i;
-					devices[n].fasync = chip_n;
-					n++;
-					chip_n++;
-				}
+				int retry = 3;
+				do {
+					retry--;
+					chip_detected = detect_chip(chip_n);
+					if (chip_detected) {
+						applog(LOG_WARNING, "BITFURY slot: %d, chip #%d detected", i, n);
+						devices[n].slot = i;
+                                     //           devices[n].slot = i+1;
+						devices[n].fasync = chip_n;
+						n++;
+						chip_n++	;
+					}
+				} while (!chip_detected && retry > 0);
 			} while (chip_detected);
 			deselect_slot(i);
 			applog(LOG_WARNING, "BITFURY slot: %d, %d chips", i, chip_n);
@@ -648,4 +654,5 @@ int libbitfury_sendHashData(struct bitfury_device *bf, int chip_n) {
 int libbitfury_readHashData(unsigned int *res) {
 	return 0;
 }
+
 

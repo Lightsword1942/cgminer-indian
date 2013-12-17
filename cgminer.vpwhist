@@ -1,0 +1,46 @@
+[Global]
+CurrentProject=cgminer.vpj
+[ProjectDates]
+cgminer.vpj=20131025174641264
+[ActiveConfig]
+cgminer.vpj=Debug
+[TreeExpansion2]
+-@ cgminer.vpj
+  - Source Files
+  + Header Files
+  + Resource Files
+  + Bitmaps
+  + Other Files
+scroll:80
+[State]
+SCREEN: 1920 1080 360 74 1202 894 0 0 M 0 0 0 0 1310 660 0
+CWD: ..\cgminer-indian
+BUFFER: BN="libbitfury.c"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=50336624 TL=0 MLL=0 ASE=0 LNL=1 LCF=6 CAPS=0 E=0 ESBU2=1 CL="" SC="" SCE= SCU=
+VIEW: LN=.0 CL=1 LE=0 CX=1 CY=0 WI=5 BI=14 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="adl.c"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C/C++	HM=0 MF=52429600 TL=0 MLL=0 ASE=0 LNL=1 LCF=6 CAPS=0 E=0 ESBU2=1 CL="" SC="" SCE= SCU=
+VIEW: LN=.0 CL=1 LE=0 CX=1 CY=0 WI=5 BI=15 HT=0 HN=0 HF=0 HC=4
+WINDOW: 72 27 1227 461 0 0 N  WF=0 WT=1 ",,,"
+BUFFER: BN="libbitfury.c"
+VIEW: LN=.0 CL=1 LE=0 CX=6 CY=0 WI=191 BI=14 HT=0 HN=0 HF=0 HC=4
+WINDOW: 80 54 1015 462 0 0 M  WF=0 WT=2 ",,,"
+BUFFER: BN="adl.c"
+VIEW: LN=.0 CL=1 LE=0 CX=7 CY=0 WI=336 BI=15 HT=0 HN=0 HF=0 HC=4
+MARK: MT=LINE BN="\\192.168.0.44\dev\cgminer-indian\libbitfury.c" SL=.0 SC=1 LL=.18674 EC=1
+FILEHIST: 9
+Y:\git-cn\code\Bitcoin\sha2\sha2.h
+Y:\git-cn\code\Bitcoin\sha2\sha2.c
+..\cgminer\cgminer.vtg
+..\cgminer\libbitfury.c
+..\cgminer\libbitfury.h
+..\cgminer\driver-bitfury.c
+libbitfury.h
+libbitfury.c
+adl.c
+TBCLASS: 0 0
+DEBUG: 0 0 0 0 3 0 gdb
+printf
+strcpy
+std::*
+DEBUG2: 0

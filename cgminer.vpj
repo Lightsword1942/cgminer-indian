@@ -1,0 +1,470 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="GNU C/C++"
+    WorkingDir="."
+    BuildSystem="vsbuild">
+    <Config
+        Name="Debug"
+        Type="gnuc"
+        DebugCallbackName="gdb"
+        Version="1"
+        OutputFile="%bdcgminer.exe"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                Dialog="_gnuc_options_form Compile"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                OutputExts="*.o"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='gcc -c %xup  %defd -g -o "%bd%n%oe" %i "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link"
+                ShowOnMenu="Never"
+                Dialog="_gnuc_options_form Link"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='gcc %xup -g -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                Dialog="_gnuc_options_form Compile"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t build'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                Dialog="_gnuc_options_form Compile"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                Dialog="_gnuc_options_form Run/Debug"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                Dialog="_gnuc_options_form Run/Debug"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+            <Target
+                Name="dash"
+                MenuCaption="-"
+                Deletable="0">
+                <Exec/>
+            </Target>
+            <Target
+                Name="GNU C Options"
+                MenuCaption="GNU C &amp;Options..."
+                ShowOnMenu="HideIfNoCmdLine"
+                Deletable="0"
+                SaveOption="SaveNone">
+                <Exec
+                    CmdLine="gnucoptions"
+                    Type="Slick-C"/>
+            </Target>
+        </Menu>
+        <List Name="GNUC Options">
+            <Item
+                Name="LinkerOutputType"
+                Value="Executable"/>
+        </List>
+    </Config>
+    <Config
+        Name="Release"
+        Type="gnuc"
+        DebugCallbackName="gdb"
+        Version="1"
+        OutputFile="%bdcgminer.exe"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                Dialog="_gnuc_options_form Compile"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                OutputExts="*.o"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='gcc -c %xup %defd -o "%bd%n%oe" %i "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link"
+                ShowOnMenu="Never"
+                Dialog="_gnuc_options_form Link"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='gcc %xup -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                Dialog="_gnuc_options_form Compile"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t build'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                Dialog="_gnuc_options_form Compile"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                Dialog="_gnuc_options_form Run/Debug"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                Dialog="_gnuc_options_form Run/Debug"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+            <Target
+                Name="dash"
+                MenuCaption="-"
+                Deletable="0">
+                <Exec/>
+            </Target>
+            <Target
+                Name="GNU C Options"
+                MenuCaption="GNU C &amp;Options..."
+                ShowOnMenu="HideIfNoCmdLine"
+                Deletable="0"
+                SaveOption="SaveNone">
+                <Exec
+                    CmdLine="gnucoptions"
+                    Type="Slick-C"/>
+            </Target>
+        </Menu>
+        <List Name="GNUC Options">
+            <Item
+                Name="LinkerOutputType"
+                Value="Executable"/>
+        </List>
+    </Config>
+    <Files>
+        <Folder
+            Name="Source Files"
+            Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm">
+            <F N="adl.c"/>
+            <F N="c:/work/cgminer-master/adl.c"/>
+            <F N="adl.h"/>
+            <F N="adl_functions.h"/>
+            <F N="api-example.c"/>
+            <F N="c:/work/cgminer-master/api-example.c"/>
+            <F N="api.c"/>
+            <F N="c:/work/cgminer-master/api.c"/>
+            <F N="arg-nonnull.h"/>
+            <F N="lib/arg-nonnull.h"/>
+            <F N="bench_block.h"/>
+            <F N="bitforce-firmware-flash.c"/>
+            <F N="c:/work/cgminer-master/bitforce-firmware-flash.c"/>
+            <F N="c++defs.h"/>
+            <F N="lib/c++defs.h"/>
+            <F N="cgminer.c"/>
+            <F N="c:/work/cgminer-master/cgminer.c"/>
+            <F N="compat.h"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_fail-cast_if_type-promotable.c"/>
+            <F N="ccan/typesafe_cb/test/compile_fail-cast_if_type-promotable.c"/>
+            <F N="c:/work/cgminer-master/ccan/compiler/test/compile_fail-printf.c"/>
+            <F N="ccan/compiler/test/compile_fail-printf.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_fail-typesafe_cb-int.c"/>
+            <F N="ccan/typesafe_cb/test/compile_fail-typesafe_cb-int.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_fail-typesafe_cb.c"/>
+            <F N="ccan/typesafe_cb/test/compile_fail-typesafe_cb.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_fail-typesafe_cb_cast-multi.c"/>
+            <F N="ccan/typesafe_cb/test/compile_fail-typesafe_cb_cast-multi.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_fail-typesafe_cb_cast.c"/>
+            <F N="ccan/typesafe_cb/test/compile_fail-typesafe_cb_cast.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_fail-typesafe_cb_postargs.c"/>
+            <F N="ccan/typesafe_cb/test/compile_fail-typesafe_cb_postargs.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_fail-typesafe_cb_preargs.c"/>
+            <F N="ccan/typesafe_cb/test/compile_fail-typesafe_cb_preargs.c"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/compile_ok-const-arg.c"/>
+            <F N="ccan/opt/test/compile_ok-const-arg.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_ok-typesafe_cb-NULL.c"/>
+            <F N="ccan/typesafe_cb/test/compile_ok-typesafe_cb-NULL.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_ok-typesafe_cb-undefined.c"/>
+            <F N="ccan/typesafe_cb/test/compile_ok-typesafe_cb-undefined.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_ok-typesafe_cb-vars.c"/>
+            <F N="ccan/typesafe_cb/test/compile_ok-typesafe_cb-vars.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/compile_ok-typesafe_cb_cast.c"/>
+            <F N="ccan/typesafe_cb/test/compile_ok-typesafe_cb_cast.c"/>
+            <F N="ccan/compiler/compiler.h"/>
+            <F N="config.h"/>
+            <F N="compat/libusb-1.0/config.h"/>
+            <F N="compat/libusb-1.0/libusb/core.c"/>
+            <F N="compat/libusb-1.0/libusb/os/darwin_usb.c"/>
+            <F N="compat/libusb-1.0/libusb/os/darwin_usb.h"/>
+            <F N="compat/libusb-1.0/libusb/descriptor.c"/>
+            <F N="compat/libusb-1.0/examples/dpfp.c"/>
+            <F N="compat/libusb-1.0/examples/dpfp_threaded.c"/>
+            <F N="driver-avalon.c"/>
+            <F N="c:/work/cgminer-master/driver-avalon.c"/>
+            <F N="driver-avalon.h"/>
+            <F N="driver-bflsc.c"/>
+            <F N="c:/work/cgminer-master/driver-bflsc.c"/>
+            <F N="driver-bflsc.h"/>
+            <F N="driver-bitforce.c"/>
+            <F N="c:/work/cgminer-master/driver-bitforce.c"/>
+            <F N="driver-bitfury.c"/>
+            <F N="driver-icarus.c"/>
+            <F N="c:/work/cgminer-master/driver-icarus.c"/>
+            <F N="driver-modminer.c"/>
+            <F N="c:/work/cgminer-master/driver-modminer.c"/>
+            <F N="driver-opencl.c"/>
+            <F N="c:/work/cgminer-master/driver-opencl.c"/>
+            <F N="driver-opencl.h"/>
+            <F N="driver-ztex.c"/>
+            <F N="c:/work/cgminer-master/driver-ztex.c"/>
+            <F N="c:/work/cgminer-master/lib/dummy.c"/>
+            <F N="lib/dummy.c"/>
+            <F N="c:/work/cgminer-master/compat/jansson/dump.c"/>
+            <F N="compat/jansson/dump.c"/>
+            <F N="elist.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/error.c"/>
+            <F N="compat/jansson/error.c"/>
+            <F N="findnonce.c"/>
+            <F N="c:/work/cgminer-master/findnonce.c"/>
+            <F N="findnonce.h"/>
+            <F N="fpgautils.c"/>
+            <F N="c:/work/cgminer-master/fpgautils.c"/>
+            <F N="fpgautils.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/hashtable.c"/>
+            <F N="compat/jansson/hashtable.c"/>
+            <F N="compat/jansson/hashtable.h"/>
+            <F N="c:/work/cgminer-master/ccan/opt/helpers.c"/>
+            <F N="ccan/opt/helpers.c"/>
+            <F N="hexdump.c"/>
+            <F N="c:/work/cgminer-master/hexdump.c"/>
+            <F N="compat/libusb-1.0/libusb/hotplug.c"/>
+            <F N="compat/libusb-1.0/libusb/hotplug.h"/>
+            <F N="compat/libusb-1.0/examples/hotplugtest.c"/>
+            <F N="compat/libusb-1.0/libusb/io.c"/>
+            <F N="compat/jansson/jansson.h"/>
+            <F N="compat/jansson/jansson_config.h"/>
+            <F N="compat/jansson/jansson_private.h"/>
+            <F N="libbitfury.c"/>
+            <F N="libbitfury.h"/>
+            <F N="compat/libusb-1.0/libusb/libusb.h"/>
+            <F N="compat/libusb-1.0/libusb/libusbi.h"/>
+            <F N="libztex.c"/>
+            <F N="c:/work/cgminer-master/libztex.c"/>
+            <F N="libztex.h"/>
+            <F N="compat/libusb-1.0/libusb/os/linux_netlink.c"/>
+            <F N="compat/libusb-1.0/libusb/os/linux_udev.c"/>
+            <F N="compat/libusb-1.0/libusb/os/linux_usbfs.c"/>
+            <F N="compat/libusb-1.0/libusb/os/linux_usbfs.h"/>
+            <F N="compat/libusb-1.0/examples/listdevs.c"/>
+            <F N="c:/work/cgminer-master/compat/jansson/load.c"/>
+            <F N="compat/jansson/load.c"/>
+            <F N="logging.c"/>
+            <F N="c:/work/cgminer-master/logging.c"/>
+            <F N="logging.h"/>
+            <F N="c:/work/cgminer-master/lib/memchr.c"/>
+            <F N="lib/memchr.c"/>
+            <F N="c:/work/cgminer-master/lib/memmem.c"/>
+            <F N="lib/memmem.c"/>
+            <F N="c:/work/cgminer-master/compat/jansson/memory.c"/>
+            <F N="compat/jansson/memory.c"/>
+            <F N="miner.h"/>
+            <F N="ocl.c"/>
+            <F N="c:/work/cgminer-master/ocl.c"/>
+            <F N="ocl.h"/>
+            <F N="compat/libusb-1.0/libusb/os/openbsd_usb.c"/>
+            <F N="c:/work/cgminer-master/ccan/opt/opt.c"/>
+            <F N="ccan/opt/opt.c"/>
+            <F N="ccan/opt/opt.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/pack_unpack.c"/>
+            <F N="compat/jansson/pack_unpack.c"/>
+            <F N="c:/work/cgminer-master/ccan/opt/parse.c"/>
+            <F N="ccan/opt/parse.c"/>
+            <F N="compat/libusb-1.0/libusb/os/poll_posix.h"/>
+            <F N="compat/libusb-1.0/libusb/os/poll_windows.c"/>
+            <F N="compat/libusb-1.0/libusb/os/poll_windows.h"/>
+            <F N="ccan/opt/private.h"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/run-checkopt.c"/>
+            <F N="ccan/opt/test/run-checkopt.c"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/run-correct-reporting.c"/>
+            <F N="ccan/opt/test/run-correct-reporting.c"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/run-helpers.c"/>
+            <F N="ccan/opt/test/run-helpers.c"/>
+            <F N="c:/work/cgminer-master/ccan/compiler/test/run-is_compile_constant.c"/>
+            <F N="ccan/compiler/test/run-is_compile_constant.c"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/run-iter.c"/>
+            <F N="ccan/opt/test/run-iter.c"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/run-no-options.c"/>
+            <F N="ccan/opt/test/run-no-options.c"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/run-usage.c"/>
+            <F N="ccan/opt/test/run-usage.c"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/run.c"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/test/run.c"/>
+            <F N="ccan/opt/test/run.c"/>
+            <F N="ccan/typesafe_cb/test/run.c"/>
+            <F N="compat/libusb-1.0/examples/sam3u_benchmark.c"/>
+            <F N="scrypt.c"/>
+            <F N="c:/work/cgminer-master/scrypt.c"/>
+            <F N="scrypt.h"/>
+            <F N="sha2.c"/>
+            <F N="c:/work/cgminer-master/sha2.c"/>
+            <F N="sha2.h"/>
+            <F N="lib/sig-handler.h"/>
+            <F N="c:/work/cgminer-master/lib/sigaction.c"/>
+            <F N="lib/sigaction.c"/>
+            <F N="lib/signal.h"/>
+            <F N="lib/signal.in.h"/>
+            <F N="c:/work/cgminer-master/lib/sigprocmask.c"/>
+            <F N="lib/sigprocmask.c"/>
+            <F N="spidevc.c"/>
+            <F N="spidevc.h"/>
+            <F N="lib/stddef.in.h"/>
+            <F N="lib/stdint.in.h"/>
+            <F N="lib/str-two-way.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/strbuffer.c"/>
+            <F N="compat/jansson/strbuffer.c"/>
+            <F N="compat/jansson/strbuffer.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/strconv.c"/>
+            <F N="compat/jansson/strconv.c"/>
+            <F N="lib/string.h"/>
+            <F N="lib/string.in.h"/>
+            <F N="compat/libusb-1.0/libusb/sync.c"/>
+            <F N="compat/libusb-1.0/examples/testlibusb1.c"/>
+            <F N="compat/libusb-1.0/libusb/os/threads_posix.c"/>
+            <F N="compat/libusb-1.0/libusb/os/threads_posix.h"/>
+            <F N="compat/libusb-1.0/libusb/os/threads_windows.c"/>
+            <F N="compat/libusb-1.0/libusb/os/threads_windows.h"/>
+            <F N="tm_i2c.c"/>
+            <F N="tm_i2c.h"/>
+            <F N="ccan/typesafe_cb/typesafe_cb.h"/>
+            <F N="c:/work/cgminer-master/ccan/opt/usage.c"/>
+            <F N="ccan/opt/usage.c"/>
+            <F N="usbutils.c"/>
+            <F N="c:/work/cgminer-master/usbutils.c"/>
+            <F N="usbutils.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/utf.c"/>
+            <F N="compat/jansson/utf.c"/>
+            <F N="compat/jansson/utf.h"/>
+            <F N="uthash.h"/>
+            <F N="util.c"/>
+            <F N="c:/work/cgminer-master/util.c"/>
+            <F N="util.h"/>
+            <F N="compat/jansson/util.h"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/utils.c"/>
+            <F N="ccan/opt/test/utils.c"/>
+            <F N="ccan/opt/test/utils.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/value.c"/>
+            <F N="compat/jansson/value.c"/>
+            <F N="compat/libusb-1.0/libusb/version.h"/>
+            <F N="warn-on-use.h"/>
+            <F N="lib/warn-on-use.h"/>
+            <F N="compat/libusb-1.0/libusb/os/windows_usb.c"/>
+            <F N="compat/libusb-1.0/libusb/os/windows_usb.h"/>
+        </Folder>
+        <Folder
+            Name="Header Files"
+            Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+            <F N="c:/work/cgminer-master/adl.h"/>
+            <F N="c:/work/cgminer-master/adl_functions.h"/>
+            <F N="c:/work/cgminer-master/arg-nonnull.h"/>
+            <F N="c:/work/cgminer-master/bench_block.h"/>
+            <F N="c:/work/cgminer-master/c++defs.h"/>
+            <F N="c:/work/cgminer-master/compat.h"/>
+            <F N="c:/work/cgminer-master/ccan/compiler/compiler.h"/>
+            <F N="c:/work/cgminer-master/driver-avalon.h"/>
+            <F N="c:/work/cgminer-master/driver-bflsc.h"/>
+            <F N="c:/work/cgminer-master/driver-opencl.h"/>
+            <F N="c:/work/cgminer-master/elist.h"/>
+            <F N="c:/work/cgminer-master/findnonce.h"/>
+            <F N="c:/work/cgminer-master/fpgautils.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/hashtable.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/jansson.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/jansson_config.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/jansson_private.h"/>
+            <F N="c:/work/cgminer-master/libztex.h"/>
+            <F N="c:/work/cgminer-master/logging.h"/>
+            <F N="c:/work/cgminer-master/miner.h"/>
+            <F N="c:/work/cgminer-master/ocl.h"/>
+            <F N="c:/work/cgminer-master/ccan/opt/opt.h"/>
+            <F N="c:/work/cgminer-master/ccan/opt/private.h"/>
+            <F N="c:/work/cgminer-master/scrypt.h"/>
+            <F N="c:/work/cgminer-master/sha2.h"/>
+            <F N="c:/work/cgminer-master/lib/sig-handler.h"/>
+            <F N="c:/work/cgminer-master/lib/signal.in.h"/>
+            <F N="c:/work/cgminer-master/lib/stddef.in.h"/>
+            <F N="c:/work/cgminer-master/lib/stdint.in.h"/>
+            <F N="c:/work/cgminer-master/lib/str-two-way.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/strbuffer.h"/>
+            <F N="c:/work/cgminer-master/lib/string.in.h"/>
+            <F N="c:/work/cgminer-master/ccan/typesafe_cb/typesafe_cb.h"/>
+            <F N="c:/work/cgminer-master/usbutils.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/utf.h"/>
+            <F N="c:/work/cgminer-master/uthash.h"/>
+            <F N="c:/work/cgminer-master/util.h"/>
+            <F N="c:/work/cgminer-master/compat/jansson/util.h"/>
+            <F N="c:/work/cgminer-master/ccan/opt/test/utils.h"/>
+            <F N="c:/work/cgminer-master/warn-on-use.h"/>
+        </Folder>
+        <Folder
+            Name="Resource Files"
+            Filters="*.ico;*.cur;*.dlg"/>
+        <Folder
+            Name="Bitmaps"
+            Filters="*.bmp"/>
+        <Folder
+            Name="Other Files"
+            Filters=""/>
+    </Files>
+</Project>

@@ -30,6 +30,7 @@
 #include "miner.h"
 
 #define BITFURY_STAT_N 1024
+#define MAX_SLOTS 4
 
 struct bitfury_payload {
 	unsigned char midstate[32];
@@ -76,5 +77,6 @@ void work_to_payload(struct bitfury_payload *p, struct work *w);
 struct timespec t_diff(struct timespec start, struct timespec end);
 int libbitfury_detectChips(struct bitfury_device *devices);
 int libbitfury_shutdownChips(struct bitfury_device *devices, int chip_n);
+
 
 #endif /* __LIBBITFURY_H__ */

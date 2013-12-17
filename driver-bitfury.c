@@ -31,7 +31,6 @@
 #include "util.h"
 
 #define GOLDEN_BACKLOG 5
-
 struct device_drv bitfury_drv;
 
 // Forward declarations
@@ -39,7 +38,7 @@ static void bitfury_disable(struct thr_info* thr);
 static bool bitfury_prepare(struct thr_info *thr);
 int calc_stat(time_t * stat_ts, time_t stat, struct timeval now);
 double shares_to_ghashes(int shares, int seconds);
-
+void set_chip_opts(struct bitfury_device *devices, int chip_n);
 int submit_work(struct bitfury_work *w, struct thr_info *thr);
 
 static void bitfury_detect(void)
@@ -91,8 +90,8 @@ static int64_t bitfury_scanHash(struct thr_info *thr)
 
 	if (!first) {
 		for (i = 0; i < chip_n; i++) {
-			devices[i].osc6_bits = 54;
-		}
+			devices[i].osc6_bits = 50;
+		}        
 		set_chip_opts(devices, chip_n);
 		for (i = 0; i < chip_n; i++) {
 			send_reinit(devices[i].slot, devices[i].fasync, devices[i].osc6_bits);
@@ -269,7 +268,7 @@ int calc_stat(time_t * stat_ts, time_t stat, struct timeval now) {
 	return shares_found;
 }
 
-static void bitfury_statline_before(char *buf, struct cgpu_info *cgpu)
+static void bitfury_statline_before(char *buf, size_t s, struct cgpu_info *cgpu)
 {
 	applog(LOG_INFO, "INFO bitfury_statline_before");
 }

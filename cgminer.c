@@ -176,7 +176,7 @@ bool opt_bfl_noncerange;
 #define QUIET	(opt_quiet || opt_realquiet)
 
 #if defined(USE_BITFURY)
-int opt_bitfury_board_type=0;
+int opt_bitfury_board_type=1;
 char *opt_bitfury_options = NULL;
 #endif
 
